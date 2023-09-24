@@ -34,10 +34,7 @@ extractNumber('а я томат');
 
 const myPadStart = (string, minLength, pad) => {
   while (string.length < minLength) {
-    const newResultLength = string.length + pad.length;
-
-    const actualPad = (newResultLength <= minLength) & pad;
-    pad.slice.result(0, minLength - newResultLength);
+    string = pad.slice(0, minLength - string.length) + string;
   }
   return string;
 };
