@@ -103,4 +103,3 @@ const getPictures = () =>
   );
 
 export {getPictures};
-
