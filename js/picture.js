@@ -3,9 +3,8 @@ const pictureTemplate = document
   .content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
-const createPicture = (data) => {
-  const { comments, description, likes, url } = data;
-  const picture = pictureTemplate.cloneNode(true);  // Клонирование 
+const createPicture = ({comments, description, likes, url}) => {
+   const picture = pictureTemplate.cloneNode(true);  // Клонирование 
 
   picture.querySelector('.picture__img').src = url;
   picture.querySelector('.picture__img').alt = description;
