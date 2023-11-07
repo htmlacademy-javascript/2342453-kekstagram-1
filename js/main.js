@@ -1,4 +1,4 @@
-import {getPictures} from './data.js';
+import { getPictures } from './data.js';
+import { renderPictures } from './picture.js';
 
-getPictures();
-// Импортировал и вызвал.
+renderPictures(getPictures());
