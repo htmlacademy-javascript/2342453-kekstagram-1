@@ -1,20 +1,26 @@
+import { showBigPicture } from './big-picture.js';
+
 const pictureTemplate = document
   .querySelector('#picture')
   .content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
-const createPicture = ({comments, description, likes, url}) => {
-  const picture = pictureTemplate.cloneNode(true); // Клонирование
+const createPicture = (data) => {
+  const { comments, description, likes, url } = data;
+  const picture = pictureTemplate.cloneNode(true);
 
   picture.querySelector('.picture__img').src = url;
   picture.querySelector('.picture__img').alt = description;
   picture.querySelector('.picture__comments').textContent = comments.length;
   picture.querySelector('.picture__likes').textContent = likes;
 
+  picture.addEventListener('click', () => {
+    showBigPicture(data);
+  });
+
   return picture;
 };
 
-/* Функция, генерирующая фрагмент*/
 const renderPictures = (pictures) => {
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
