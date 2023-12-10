@@ -93,20 +93,7 @@ pristine.addValidator(
   'Неправильно заполнены хэштеги'
 );
 
-const setOnFormSubmit = (cb) => {
-  form.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const isValid = pristine.validate();
-
-    if (isValid) {
-      blockSubmitButton();
-      await cb(new FormData(form));
-      unblockSubmitButton();
-    }
-  });
-};
-
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 
-export { setOnFormSubmit, hideModal };
+export { hideModal };
