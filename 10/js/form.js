@@ -11,7 +11,7 @@ const submitButton = form.querySelector('.img-upload__submit');
 const MAX_HASHTAG_COUNT = 5;
 const MIN_HASHTAG_LENGTH = 2;
 const MAX_HASHTAG_LENGTH = 20;
-const UNVALID_SYMBOLS = /[^a-zA-Z0-9а-яА-ЯёЁ]/g;
+const VALID_SYMBOLS = /[^a-zA-Z0-9а-яА-ЯёЁ]/g;
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__element',
@@ -93,20 +93,7 @@ pristine.addValidator(
   'Неправильно заполнены хэштеги'
 );
 
-const setOnFormSubmit = (cb) => {
-  form.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const isValid = pristine.validate();
-
-    if (isValid) {
-      blockSubmitButton();
-      await cb(new FormData(form));
-      unblockSubmitButton();
-    }
-  });
-};
-
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 
-export { setOnFormSubmit, hideModal };
+export { hideModal };
