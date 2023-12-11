@@ -57,7 +57,7 @@ const startsWithHash = (string) => string[0] === '#';
 const hasValidLength = (string) =>
   string.length >= MIN_HASHTAG_LENGTH && string.length <= MAX_HASHTAG_LENGTH;
 
-const hasValidSymbols = (string) => !UNVALID_SYMBOLS.test(string.slice(1));
+const hasValidSymbols = (string) => !VALID_SYMBOLS.test(string.slice(1));
 
 const isValidTag = (tag) =>
   startsWithHash(tag) && hasValidLength(tag) && hasValidSymbols(tag);
@@ -96,4 +96,4 @@ pristine.addValidator(
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClick);
 
-export { hideModal };
+export { blockSubmitButton, unblockSubmitButton, hideModal };
